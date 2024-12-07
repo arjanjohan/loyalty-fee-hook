@@ -1,37 +1,18 @@
-# Uniswap Custom Swap Curve
+# Uniswap Loyalty Points Fee Hook
 
-> [!WARNING]
-> This project is still in a very early and experimental phase. It has never
-> been audited nor thoroughly reviewed for security vulnerabilities. Do not use
-> in production.
-
-### **A template for writing Uniswap Custom Swap Curves in Stylus**
-
-[`Use this Template`](https://github.com/OpenZeppelin/uniswap-stylus-curve-template/generate)
-
-1. The example curve [lib.rs](src/lib.rs) demonstrates a constant-sum swap curve,
-in which tokens are traded exactly 1:1.
-
-> [!TIP]
-> You can modify `ICurve` trait based on your needs, or provide your custom algorithm
-> for a swap curve calculation.
-
-> [!CAUTION]
-> If anything changes in the contract's interface, make sure to update your
-> Solidity contract with Uniswap hooks to use the new Solidity ABI Interface of this contract.
+This is an Arbitrum Stylus smart contract that is used by [LoyaltyPointsFeeHook.sol in this repo](https://github.com/arjanjohan/loyalty-points-fee-hook).
 
 ## Getting started
 
-Follow the instructions in the [Stylus quickstart](https://docs.arbitrum.io/stylus/stylus-quickstart) to configure your development environment.
-
-You'll also need [Foundry](https://github.com/foundry-rs/foundry) to interact with the contract.
-
-## Check and deploy
-
-You can use [cargo stylus](https://github.com/OffchainLabs/cargo-stylus) to check that your contract is compatible with Stylus by running
+First start the Nitro testnode.
 
 ```shell
-cargo stylus check
+./scripts/nitro-testnode.sh -d -i
+```
+
+If you need to have some testnet tokens, you can use this script
+```shell
+./nitro-testnode/test-node.bash script send-l2 --to address_<address> --ethamount <amount>
 ```
 
 With the following command you can deploy it to an Arbitrum chain
@@ -63,31 +44,13 @@ To export the Solidity ABI interface run the following command
 cargo stylus export-abi
 ```
 
-## How to run a local dev node
-
-Instructions to setup a local dev node can be found [here](https://docs.arbitrum.io/run-arbitrum-node/run-nitro-dev-node).
-
-Alternatively, you can use the bash script available [nitro-testnode.sh](/scripts/nitro-testnode.sh)
-
-```shell
-./scripts/nitro-testnode.sh -d -i
-```
-
-If you need to have some testnet tokens, you can use this script
-```shell
-./nitro-testnode/test-node.bash script send-l2 --to address_<address> --ethamount <amount>
-```
-
-For example
-```shell
-./nitro-testnode/test-node.bash script send-l2 --to address_0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --ethamount 5
-```
-
 ## Solidity Interface
 
 This is the current Solidity ABI Interface for the contract
 
-```solidity
+TODO.
+
+<!-- ```solidity
 interface IUniswapCurve {
     function getAmountInForExactOutput(uint256 amount_out, address input, address output, bool zero_for_one) external returns (uint256);
 
@@ -95,4 +58,4 @@ interface IUniswapCurve {
 
     error CurveCustomError();
 }
-```
+``` -->

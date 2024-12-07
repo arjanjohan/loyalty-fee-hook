@@ -2,5 +2,5 @@
 
 #[cfg(feature = "export-abi")]
 fn main() {
-    uniswap_curve::print_abi("MIT", "pragma solidity ^0.8.23;");
+    fee_logic::print_abi("MIT", "pragma solidity ^0.8.23;");
 }
